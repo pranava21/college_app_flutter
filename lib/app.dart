@@ -1,3 +1,4 @@
+import 'package:college_app/screens/department_list.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -27,16 +28,21 @@ class ActionList extends StatelessWidget {
       padding: const EdgeInsets.all(10.0),
       children: <Widget>[
         ListTile(
-          contentPadding: const EdgeInsets.all(10.0), 
+          contentPadding: const EdgeInsets.all(10.0),
           title: Center(child: Text(_listOfActions[0])),
-          tileColor: Colors.amber[600]
+          tileColor: Colors.amber[600],
+          onTap: () => _navigateToDepartmentList(context),
         ),
         ListTile(
-          contentPadding: const EdgeInsets.all(10.0), 
-          title: Center(child: Text(_listOfActions[1])),
-          tileColor: Colors.amber[300]
-        )
+            contentPadding: const EdgeInsets.all(10.0),
+            title: Center(child: Text(_listOfActions[1])),
+            tileColor: Colors.amber[300])
       ],
     );
+  }
+
+  void _navigateToDepartmentList(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => DepartmentList()));
   }
 }
