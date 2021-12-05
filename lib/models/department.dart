@@ -10,8 +10,9 @@ part 'department.g.dart';
 class Department {
   final String departmentUid;
   String departmentName;
+  String departmentImageUrl;
 
-  Department(this.departmentUid, this.departmentName);
+  Department(this.departmentUid, this.departmentName, this.departmentImageUrl);
 
   factory Department.fromJson(Map<String, dynamic> json) =>
       _$DepartmentFromJson(json);

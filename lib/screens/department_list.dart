@@ -1,5 +1,8 @@
+import 'package:college_app/components/department_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:college_app/models/department.dart';
+
+const double ListItemHeight = 245.0;
 
 class DepartmentList extends StatefulWidget {
   @override
@@ -25,7 +28,7 @@ class _DepartmentListState extends State<DepartmentList> {
             child: Column(
               children: [
                 renderProgressBar(context),
-                renderDepartmentList(context)
+                Expanded(child: renderDepartmentList(context))
               ],
             )));
   }
@@ -56,15 +59,49 @@ class _DepartmentListState extends State<DepartmentList> {
     return ListView.builder(
       itemCount: this._departments.length,
       itemBuilder: renderItemBuilder,
-      scrollDirection: Axis.vertical,
       shrinkWrap: true,
     );
   }
 
   Widget renderItemBuilder(BuildContext context, int index) {
     final department = this._departments[index];
-    return ListTile(
-        contentPadding: const EdgeInsets.all(10.0),
-        title: Text(department.departmentName));
+    return Container(
+        height: ListItemHeight,
+        child: Stack(children: [
+          _tileImage(department.departmentImageUrl,
+              MediaQuery.of(context).size.width, ListItemHeight),
+          _tileFooter(department)
+        ]));
+  }
+
+  Widget _tileImage(String url, double width, double height) {
+    if (url.isEmpty) {
+      return Container();
+    }
+
+    try {
+      return Container(
+        constraints: BoxConstraints.expand(),
+        child: Image.network(url, fit: BoxFit.cover),
+      );
+    } catch (e) {
+      print("could not load image $url");
+      return Container();
+    }
+  }
+
+  Widget _tileFooter(Department department) {
+    final info = DepartmentTile(department: department, darkTheme: true);
+    final overlay = Container(
+      padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 12.0),
+      decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
+      child: info,
+    );
+
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [overlay],
+    );
   }
 }
