@@ -3,6 +3,7 @@
 import 'package:college_app/components/department_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:college_app/models/department.dart';
+import 'student_list.dart';
 
 const double listItemHeight = 245.0;
 
@@ -69,13 +70,15 @@ class _DepartmentListState extends State<DepartmentList> {
 
   Widget renderItemBuilder(BuildContext context, int index) {
     final department = this._departments[index];
-    return Container(
-        height: listItemHeight,
-        child: Stack(children: [
-          _tileImage(department.departmentImageUrl,
-              MediaQuery.of(context).size.width, listItemHeight),
-          _tileFooter(department)
-        ]));
+    return GestureDetector(
+        onTap: () => _navigateToStudentList(context, department.departmentUid),
+        child: Container(
+            height: listItemHeight,
+            child: Stack(children: [
+              _tileImage(department.departmentImageUrl,
+                  MediaQuery.of(context).size.width, listItemHeight),
+              _tileFooter(department)
+            ])));
   }
 
   Widget _tileImage(String url, double width, double height) {
@@ -107,5 +110,10 @@ class _DepartmentListState extends State<DepartmentList> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [overlay],
     );
+  }
+
+  _navigateToStudentList(BuildContext context, String departmentUid) {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => StudentList(departmentUid)));
   }
 }
