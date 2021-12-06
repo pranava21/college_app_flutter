@@ -2,7 +2,7 @@ import '../models/department.dart';
 import 'package:flutter/material.dart';
 import '../styles.dart';
 
-const DepartmentTileHeight = 100.0;
+const departmentTileHeight = 100.0;
 
 class DepartmentTile extends StatelessWidget {
   final Department department;
@@ -15,7 +15,7 @@ class DepartmentTile extends StatelessWidget {
     final title = department.departmentName.toUpperCase();
     return Container(
       padding: EdgeInsets.all(0.0),
-      height: DepartmentTileHeight,
+      height: departmentTileHeight,
       child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,

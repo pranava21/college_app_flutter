@@ -1,10 +1,14 @@
+// ignore_for_file: unnecessary_this
+
 import 'package:college_app/components/department_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:college_app/models/department.dart';
 
-const double ListItemHeight = 245.0;
+const double listItemHeight = 245.0;
 
 class DepartmentList extends StatefulWidget {
+  const DepartmentList({Key? key}) : super(key: key);
+
   @override
   createState() => _DepartmentListState();
 }
@@ -66,10 +70,10 @@ class _DepartmentListState extends State<DepartmentList> {
   Widget renderItemBuilder(BuildContext context, int index) {
     final department = this._departments[index];
     return Container(
-        height: ListItemHeight,
+        height: listItemHeight,
         child: Stack(children: [
           _tileImage(department.departmentImageUrl,
-              MediaQuery.of(context).size.width, ListItemHeight),
+              MediaQuery.of(context).size.width, listItemHeight),
           _tileFooter(department)
         ]));
   }
