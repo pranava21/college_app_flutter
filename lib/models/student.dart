@@ -1,4 +1,5 @@
 import 'package:college_app/endpoint.dart';
+import 'package:college_app/models/add_student_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:http/http.dart' as http;
 import 'department.dart';
@@ -11,11 +12,20 @@ class Student {
   final String studentUid;
   String studentName;
   String studentEmail;
+  String phoneNo;
   String departmentUid;
   String departmentName;
 
-  Student(this.studentUid, this.studentName, this.studentEmail,
+  Student(this.studentUid, this.studentName, this.studentEmail, this.phoneNo,
       this.departmentUid, this.departmentName);
+
+  Student.blank()
+      : studentName = "",
+        studentEmail = "",
+        departmentUid = "",
+        departmentName = "",
+        phoneNo = "",
+        studentUid = '';
 
   factory Student.fromJson(Map<String, dynamic> json) =>
       _$StudentFromJson(json);
@@ -35,5 +45,25 @@ class Student {
     }
 
     return students;
+  }
+
+  static Future<bool> AddStudent(AddStudentModel student) async {
+    var uri = Endpoint.uri('Student/AddStudent', queryParameters: {});
+    Map requestBody = {
+      "name": student.name,
+      "email": student.email,
+      "phone": student.phone,
+      "address": student.address,
+      "departmentUid": student.departmentUid,
+      "departmentName": student.departmentName
+    };
+    var body = json.encode(requestBody);
+    final response = await http.post(uri,headers: {"Content-Type": "application/json"}, body: body);
+
+    if (response.statusCode != 200) return false;
+
+    final Map<String, dynamic> decodedResponse = json.decode(response.body);
+
+    return decodedResponse['isSuccess'];
   }
 }

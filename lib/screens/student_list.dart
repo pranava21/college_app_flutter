@@ -35,7 +35,7 @@ class _StudentListState extends State<StudentList> {
             onRefresh: loadStudents,
             child: Column(children: [
               renderProgressBar(context),
-              renderStudentListView(context),
+              Expanded(child: renderStudentListView(context)),
             ])));
   }
 
