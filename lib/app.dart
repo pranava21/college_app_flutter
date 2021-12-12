@@ -37,10 +37,13 @@ class ActionList extends StatelessWidget {
             child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Expanded(child: GestureDetector(
-                child: Expanded(
-                    child: Image.network(departmentUrl, fit: BoxFit.cover)),
-                onTap: () => _navigateToDepartmentList(context))),
+            Expanded(
+                child: GestureDetector(
+                    child: const Expanded(
+                        child: Image(
+                            image: AssetImage('assets/department.jpg'),
+                            fit: BoxFit.cover)),
+                    onTap: () => _navigateToDepartmentList(context))),
             ListTile(
                 title: Text(_listOfActions[0]),
                 subtitle: const Text('View Students by deparment'),
@@ -51,10 +54,13 @@ class ActionList extends StatelessWidget {
             child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Expanded(child: GestureDetector(
-                child: Expanded(
-                    child: Image.network(studentUrl, fit: BoxFit.cover)),
-                onTap: () => _navigateToAddStudentForm(context))),
+            Expanded(
+                child: GestureDetector(
+                    child: const Expanded(
+                        child: Image(
+                            image: AssetImage('assets/student.jpg'),
+                            fit: BoxFit.cover)),
+                    onTap: () => _navigateToAddStudentForm(context))),
             ListTile(
               title: Text(_listOfActions[1]),
               subtitle: const Text('Add a new student'),
