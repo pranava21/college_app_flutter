@@ -12,12 +12,30 @@ class App extends StatelessWidget {
   }
 }
 
-class ActionList extends StatelessWidget {
+class ActionList extends StatefulWidget {
+  @override
+  State createState() => new ActionListState();
+}
+
+class ActionListState extends State<ActionList> {
   final List<String> _listOfActions = ["View Students", "Add a new Student"];
   var departmentUrl =
       'https://image.shutterstock.com/image-vector/cityscape-background-educational-institution-building-600w-1591223683.jpg';
   var studentUrl =
       'https://image.shutterstock.com/image-vector/vector-set-diverse-college-university-600w-1150054505.jpg';
+
+  var image1;
+  var image2;
+
+  @override
+  initState() {
+    super.initState();
+    setState(() {
+      image1 = _tileImage(departmentUrl);
+      image2 = _tileImage(studentUrl);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +57,7 @@ class ActionList extends StatelessWidget {
           children: <Widget>[
             Expanded(
                 child: GestureDetector(
-                    child: Expanded(child: _tileImage(departmentUrl)),
+                    child: Expanded(child: image1),
                     onTap: () => _navigateToDepartmentList(context))),
             ListTile(
                 title: Text(_listOfActions[0]),
@@ -53,7 +71,7 @@ class ActionList extends StatelessWidget {
           children: <Widget>[
             Expanded(
                 child: GestureDetector(
-                    child: Expanded(child: _tileImage(studentUrl)),
+                    child: Expanded(child: image2),
                     onTap: () => _navigateToAddStudentForm(context))),
             ListTile(
               title: Text(_listOfActions[1]),
