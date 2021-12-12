@@ -13,10 +13,11 @@ class App extends StatelessWidget {
 }
 
 class ActionList extends StatelessWidget {
-  final List<String> _listOfActions = [
-    "View All Departments",
-    "Add a new Student"
-  ];
+  final List<String> _listOfActions = ["View Students", "Add a new Student"];
+  var departmentUrl =
+      'https://cdn1.iconfinder.com/data/icons/university-indigo-vol-1/256/Department-512.png';
+  var studentUrl =
+      'https://cdn2.iconfinder.com/data/icons/school-flat-circle/512/Boy_child_school_boy_student-512.png';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,21 +26,42 @@ class ActionList extends StatelessWidget {
   }
 
   Widget renderActionsListView(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.all(10.0),
+    return GridView.count(
+      primary: false,
+      padding: const EdgeInsets.all(20),
+      crossAxisSpacing: 10,
+      mainAxisSpacing: 10,
+      crossAxisCount: 2,
       children: <Widget>[
-        ListTile(
-          contentPadding: const EdgeInsets.all(10.0),
-          title: Center(child: Text(_listOfActions[0])),
-          tileColor: Colors.amber[600],
-          onTap: () => _navigateToDepartmentList(context),
-        ),
-        ListTile(
-            contentPadding: const EdgeInsets.all(10.0),
-            title: Center(child: Text(_listOfActions[1])),
-            tileColor: Colors.amber[300],
-            onTap: () => _navigateToAddStudentForm(context)
-        ),
+        Card(
+            child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Expanded(child: GestureDetector(
+                child: Expanded(
+                    child: Image.network(departmentUrl, fit: BoxFit.cover)),
+                onTap: () => _navigateToDepartmentList(context))),
+            ListTile(
+                title: Text(_listOfActions[0]),
+                subtitle: const Text('View Students by deparment'),
+                onTap: () => _navigateToDepartmentList(context)),
+          ],
+        )),
+        Card(
+            child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Expanded(child: GestureDetector(
+                child: Expanded(
+                    child: Image.network(studentUrl, fit: BoxFit.cover)),
+                onTap: () => _navigateToAddStudentForm(context))),
+            ListTile(
+              title: Text(_listOfActions[1]),
+              subtitle: const Text('Add a new student'),
+              onTap: () => _navigateToAddStudentForm(context),
+            ),
+          ],
+        )),
       ],
     );
   }
@@ -50,7 +72,7 @@ class ActionList extends StatelessWidget {
   }
 
   void _navigateToAddStudentForm(BuildContext context) {
-     Navigator.push(
+    Navigator.push(
         context, MaterialPageRoute(builder: (context) => AddStudent()));
   }
 }
