@@ -14,10 +14,9 @@ class App extends StatelessWidget {
 
 class ActionList extends StatelessWidget {
   final List<String> _listOfActions = ["View Students", "Add a new Student"];
-  var departmentUrl =
-      'https://cdn1.iconfinder.com/data/icons/university-indigo-vol-1/256/Department-512.png';
+  var departmentUrl = 'https://c.neh.tw/thumb/f/720/comvecteezy504654.jpg';
   var studentUrl =
-      'https://cdn2.iconfinder.com/data/icons/school-flat-circle/512/Boy_child_school_boy_student-512.png';
+      'https://cdn.iconscout.com/icon/free/png-256/graduating-student-2465650-2042096.png';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,10 +36,10 @@ class ActionList extends StatelessWidget {
             child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Expanded(child: GestureDetector(
-                child: Expanded(
-                    child: Image.asset('assets/department.jpg', fit: BoxFit.cover)),
-                onTap: () => _navigateToDepartmentList(context))),
+            Expanded(
+                child: GestureDetector(
+                    child: Expanded(child: _tileImage(departmentUrl)),
+                    onTap: () => _navigateToDepartmentList(context))),
             ListTile(
                 title: Text(_listOfActions[0]),
                 subtitle: const Text('View Students by deparment'),
@@ -51,10 +50,10 @@ class ActionList extends StatelessWidget {
             child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Expanded(child: GestureDetector(
-                child: Expanded(
-                    child: Image.asset('assets/student1.jpg', fit: BoxFit.cover)),
-                onTap: () => _navigateToAddStudentForm(context))),
+            Expanded(
+                child: GestureDetector(
+                    child: Expanded(child: _tileImage(studentUrl)),
+                    onTap: () => _navigateToAddStudentForm(context))),
             ListTile(
               title: Text(_listOfActions[1]),
               subtitle: const Text('Add a new student'),
@@ -74,5 +73,20 @@ class ActionList extends StatelessWidget {
   void _navigateToAddStudentForm(BuildContext context) {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => AddStudent()));
+  }
+
+  Widget _tileImage(String url) {
+    if (url.isEmpty) {
+      return Container();
+    }
+
+    try {
+      return Container(
+        child: Image.network(url, fit: BoxFit.cover),
+      );
+    } catch (e) {
+      print("could not load image $url");
+      return Container();
+    }
   }
 }
