@@ -14,6 +14,10 @@ class App extends StatelessWidget {
 
 class ActionList extends StatelessWidget {
   final List<String> _listOfActions = ["View Students", "Add a new Student"];
+  var departmentUrl =
+      'https://image.shutterstock.com/image-vector/cityscape-background-educational-institution-building-600w-1591223683.jpg';
+  var studentUrl =
+      'https://image.shutterstock.com/image-vector/vector-set-diverse-college-university-600w-1150054505.jpg';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +37,10 @@ class ActionList extends StatelessWidget {
             child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
+            Expanded(
+                child: GestureDetector(
+                    child: Expanded(child: _tileImage(departmentUrl)),
+                    onTap: () => _navigateToDepartmentList(context))),
             ListTile(
                 title: Text(_listOfActions[0]),
                 subtitle: const Text('View Students by deparment'),
@@ -43,6 +51,10 @@ class ActionList extends StatelessWidget {
             child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
+            Expanded(
+                child: GestureDetector(
+                    child: Expanded(child: _tileImage(studentUrl)),
+                    onTap: () => _navigateToAddStudentForm(context))),
             ListTile(
               title: Text(_listOfActions[1]),
               subtitle: const Text('Add a new student'),
@@ -62,5 +74,20 @@ class ActionList extends StatelessWidget {
   void _navigateToAddStudentForm(BuildContext context) {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => AddStudent()));
+  }
+
+  Widget _tileImage(String url) {
+    if (url.isEmpty) {
+      return Container();
+    }
+
+    try {
+      return Container(
+        child: Image.network(url, fit: BoxFit.cover),
+      );
+    } catch (e) {
+      print("could not load image $url");
+      return Container();
+    }
   }
 }
