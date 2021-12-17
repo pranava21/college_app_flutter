@@ -20,9 +20,9 @@ class ActionList extends StatefulWidget {
 class ActionListState extends State<ActionList> {
   final List<String> _listOfActions = ["View Students", "Add a new Student"];
   var departmentUrl =
-      'https://image.shutterstock.com/image-vector/cityscape-background-educational-institution-building-600w-1591223683.jpg';
+      'https://cdn1.iconfinder.com/data/icons/university-indigo-vol-1/256/Department-512.png';
   var studentUrl =
-      'https://image.shutterstock.com/image-vector/vector-set-diverse-college-university-600w-1150054505.jpg';
+      'https://cdn-icons-png.flaticon.com/512/201/201818.png';
 
   @override
   initState() {
