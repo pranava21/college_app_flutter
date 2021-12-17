@@ -24,16 +24,9 @@ class ActionListState extends State<ActionList> {
   var studentUrl =
       'https://image.shutterstock.com/image-vector/vector-set-diverse-college-university-600w-1150054505.jpg';
 
-  var image1;
-  var image2;
-
   @override
   initState() {
     super.initState();
-    setState(() {
-      image1 = _tileImage(departmentUrl);
-      image2 = _tileImage(studentUrl);
-    });
   }
 
   @override
@@ -57,7 +50,7 @@ class ActionListState extends State<ActionList> {
           children: <Widget>[
             Expanded(
                 child: GestureDetector(
-                    child: Expanded(child: image1),
+                    child: _tileImage(departmentUrl),
                     onTap: () => _navigateToDepartmentList(context))),
             ListTile(
                 title: Text(_listOfActions[0]),
@@ -71,7 +64,7 @@ class ActionListState extends State<ActionList> {
           children: <Widget>[
             Expanded(
                 child: GestureDetector(
-                    child: Expanded(child: image2),
+                    child: _tileImage(studentUrl),
                     onTap: () => _navigateToAddStudentForm(context))),
             ListTile(
               title: Text(_listOfActions[1]),
