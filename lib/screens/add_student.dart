@@ -152,6 +152,7 @@ class _AddStudentState extends State<AddStudent> {
     setState(() {
       departments = departmentList;
       dropDownValue = departments.first.departmentName;
+      selectedDepartmentUid = departments.first.departmentUid;
     });
   }
 
