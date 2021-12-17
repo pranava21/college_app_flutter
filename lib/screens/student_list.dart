@@ -30,7 +30,7 @@ class _StudentListState extends State<StudentList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Student List", style: Styles.navBarTitle)),
+        appBar: AppBar(title: const Text("Student List", style: Styles.navBarTitle)),
         body: RefreshIndicator(
             onRefresh: loadStudents,
             child: Column(children: [
@@ -44,17 +44,17 @@ class _StudentListState extends State<StudentList> {
       setState(() => this.loading = true);
 
       final students =
-          await Student.fetchStudentsByDepartment(this.departmentUid);
+          await Student.fetchStudentsByDepartment(departmentUid);
 
       setState(() {
         this.students = students;
-        this.loading = false;
+        loading = false;
       });
     }
   }
 
   Widget renderProgressBar(BuildContext context) {
-    return (this.loading
+    return (loading
         ? const CircularProgressIndicator(
             backgroundColor: Colors.white, color: Colors.blue)
         : Container());
@@ -62,7 +62,7 @@ class _StudentListState extends State<StudentList> {
 
   Widget renderStudentListView(BuildContext context) {
     return ListView.builder(
-      itemCount: this.students.length,
+      itemCount: students.length,
       itemBuilder: _listViewItemBuilder,
       shrinkWrap: true,
     );
@@ -70,7 +70,6 @@ class _StudentListState extends State<StudentList> {
 
   Widget _listViewItemBuilder(BuildContext context, int index) {
     final student = students[index];
-    var name = student.studentName;
     return Card(
         child: Column(
       mainAxisSize: MainAxisSize.min,

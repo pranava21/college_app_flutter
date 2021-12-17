@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:college_app/models/department.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import '../models/student.dart';
-import '../styles.dart';
 
 class AddStudent extends StatefulWidget {
+  const AddStudent({Key? key}) : super(key: key);
+
   @override
   _AddStudentState createState() => _AddStudentState();
 }
@@ -28,7 +29,7 @@ class _AddStudentState extends State<AddStudent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Add Student')),
+        appBar: AppBar(title: const Text('Add Student')),
         body: SingleChildScrollView(
             child: Container(
                 padding: const EdgeInsets.symmetric(
@@ -207,6 +208,7 @@ class _AddStudentState extends State<AddStudent> {
     }
   }
 
+  // ignore: non_constant_identifier_names
   void _SetSelectedDepartmentUid(String departmentName) {
     var dept = departments
         .where((element) => element.departmentName == departmentName)

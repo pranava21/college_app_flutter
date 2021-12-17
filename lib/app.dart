@@ -8,11 +8,13 @@ class App extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: ActionList());
+    return const MaterialApp(home: ActionList());
   }
 }
 
 class ActionList extends StatefulWidget {
+  const ActionList({Key? key}) : super(key: key);
+
   @override
   State createState() => new ActionListState();
 }
@@ -93,10 +95,9 @@ class ActionListState extends State<ActionList> {
     }
 
     try {
-      return Container(
-        child: Image.network(url, fit: BoxFit.cover),
-      );
+      return Image.network(url, fit: BoxFit.cover);
     } catch (e) {
+      // ignore: avoid_print
       print("could not load image $url");
       return Container();
     }

@@ -27,7 +27,7 @@ class _DepartmentListState extends State<DepartmentList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("List of Departments")),
+        appBar: AppBar(title: const Text("List of Departments")),
         body: RefreshIndicator(
             onRefresh: loadDepartments,
             child: Column(
@@ -72,7 +72,7 @@ class _DepartmentListState extends State<DepartmentList> {
     final department = this._departments[index];
     return GestureDetector(
         onTap: () => _navigateToStudentList(context, department.departmentUid),
-        child: Container(
+        child: SizedBox(
             height: listItemHeight,
             child: Stack(children: [
               _tileImage(department.departmentImageUrl,
@@ -88,10 +88,11 @@ class _DepartmentListState extends State<DepartmentList> {
 
     try {
       return Container(
-        constraints: BoxConstraints.expand(),
+        constraints: const BoxConstraints.expand(),
         child: Image.network(url, fit: BoxFit.cover),
       );
     } catch (e) {
+      // ignore: avoid_print
       print("could not load image $url");
       return Container();
     }
