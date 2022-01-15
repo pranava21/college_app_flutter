@@ -6,6 +6,7 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:college_app/models/add_student_model.dart';
+import 'package:college_app/models/faculty.dart';
 import 'package:college_app/models/student.dart';
 
 import '../lib/models/department.dart';
@@ -39,6 +40,16 @@ void main() {
         "Electrical and Electronics");
     final response = await Student.AddStudent(student);
 
-    expect(response, isTrue);
+    expect(response, isFalse);
+  });
+
+  test('/Faculty/GetAllFaculty', () async {
+    final faculties = await Faculty.getFacultyDetailsByDepartment(
+        'f049da45-1712-4c13-817a-cfb1faae4ea2');
+
+    for (var faculty in faculties) {
+      expect(faculty.name, hasLength(greaterThan(0)));
+      expect(faculty.email, hasLength(greaterThan(0)));
+    }
   });
 }
