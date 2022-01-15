@@ -6,6 +6,7 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:college_app/models/add_student_model.dart';
+import 'package:college_app/models/attendance.dart';
 import 'package:college_app/models/faculty.dart';
 import 'package:college_app/models/student.dart';
 
@@ -51,5 +52,37 @@ void main() {
       expect(faculty.name, hasLength(greaterThan(0)));
       expect(faculty.email, hasLength(greaterThan(0)));
     }
+  });
+
+  test('/Student/TakeAttendance', () async {
+    List<Attendance> attendanceDetails = <Attendance>[];
+    attendanceDetails.addAll([
+      Attendance(
+          0,
+          "086e8af0-0aa3-46cc-b095-3515053bbc2c",
+          "c84e7003-0ff7-4de2-b9a9-1604a1ace0d3",
+          "f049da45-1712-4c13-817a-cfb1faae4ea2",
+          DateTime.now(),
+          true),
+      Attendance(
+          0,
+          "086e8af0-0aa3-46cc-b095-3515053bbc2c",
+          "c815ce6b-1a0a-4a01-91e5-5587b3ebb16c",
+          "f049da45-1712-4c13-817a-cfb1faae4ea2",
+          DateTime.now(),
+          true),
+      Attendance(
+          0,
+          "086e8af0-0aa3-46cc-b095-3515053bbc2c",
+          "f8f81b7d-0419-4ee5-98d0-454cdf6e5c07",
+          "f049da45-1712-4c13-817a-cfb1faae4ea2",
+          DateTime.now(),
+          false)
+    ]);
+
+    final response =
+        await Attendance.submitAttendanceDetails(attendanceDetails);
+
+    expect(response, isTrue);
   });
 }
