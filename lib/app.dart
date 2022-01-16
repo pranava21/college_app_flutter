@@ -1,5 +1,6 @@
 import 'package:college_app/screens/add_student.dart';
 import 'package:college_app/screens/department_list.dart';
+import 'package:college_app/screens/select_class.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -20,11 +21,14 @@ class ActionList extends StatefulWidget {
 }
 
 class ActionListState extends State<ActionList> {
-  final List<String> _listOfActions = ["View Students", "Add a new Student"];
-  var departmentUrl =
-      'https://cdn1.iconfinder.com/data/icons/university-indigo-vol-1/256/Department-512.png';
-  var studentUrl =
-      'https://cdn-icons-png.flaticon.com/512/201/201818.png';
+  final List<String> _listOfActions = [
+    "View Students",
+    "Add a new Student",
+    "Take Attendance"
+  ];
+  var departmentUrl = 'assets/department.png';
+  var studentUrl = 'assets/students.png';
+  var attendanceUrl = 'assets/calendar.png';
 
   @override
   initState() {
@@ -75,6 +79,21 @@ class ActionListState extends State<ActionList> {
             ),
           ],
         )),
+        Card(
+            child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            Expanded(
+                child: GestureDetector(
+                    child: _tileImage(attendanceUrl),
+                    onTap: () => _navigateToTakeAttendance(context))),
+            ListTile(
+              title: Text(_listOfActions[2]),
+              subtitle: const Text('Mark attendance for students'),
+              onTap: () => _navigateToTakeAttendance(context),
+            ),
+          ],
+        )),
       ],
     );
   }
@@ -89,13 +108,18 @@ class ActionListState extends State<ActionList> {
         context, MaterialPageRoute(builder: (context) => AddStudent()));
   }
 
+  void _navigateToTakeAttendance(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => SelectClass()));
+  }
+
   Widget _tileImage(String url) {
     if (url.isEmpty) {
       return Container();
     }
 
     try {
-      return Image.network(url, fit: BoxFit.cover);
+      return Image.asset(url, fit: BoxFit.cover);
     } catch (e) {
       // ignore: avoid_print
       print("could not load image $url");
