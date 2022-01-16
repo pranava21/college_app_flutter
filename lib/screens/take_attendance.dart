@@ -1,13 +1,9 @@
-import 'dart:convert';
-
 import 'package:college_app/models/attendance.dart';
 import 'package:college_app/models/student.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as developer;
 
 import 'package:rflutter_alert/rflutter_alert.dart';
-
-import '../app.dart';
 
 class TakeAttendance extends StatefulWidget {
   final String departmentUid;
@@ -144,22 +140,24 @@ class _TakeAttendanceState extends State<TakeAttendance> {
 
   void onCancelCick(BuildContext context) async {
     Alert(
-      context: context,
-      type: AlertType.warning,
-      title: "Sure?",
-      desc: "Are you sure you want to cancel?",
-      buttons: [
-        DialogButton(
-          child: const Text("Cancel",
-              style: TextStyle(color: Colors.white, fontSize: 18),
-              textWidthBasis: TextWidthBasis.longestLine),
-          onPressed: () {
-            _navigateToHomePage(context);
-          },
-          width: 200,
-        )
-      ],
-    ).show();
+        context: context,
+        type: AlertType.warning,
+        title: "Sure?",
+        desc: "Are you sure you want to cancel?",
+        buttons: [
+          DialogButton(
+            child: const Text("Cancel",
+                style: TextStyle(color: Colors.white, fontSize: 18),
+                textWidthBasis: TextWidthBasis.longestLine),
+            onPressed: () {
+              _navigateToHomePage(context);
+            },
+            width: 200,
+          )
+        ],
+        closeFunction: () {
+          _navigateToHomePage(context);
+        }).show();
   }
 
   renderSubmitPopUp(BuildContext context) async {
@@ -191,14 +189,13 @@ class _TakeAttendanceState extends State<TakeAttendance> {
               child: const Text("Go to Home Page",
                   style: TextStyle(color: Colors.white, fontSize: 18),
                   textWidthBasis: TextWidthBasis.longestLine),
-              onPressed: () => () {
+              onPressed: () {
                 _navigateToHomePage(context);
               },
               width: 200,
             )
           ],
           closeFunction: () {
-            Navigator.of(context).pop();
             _navigateToHomePage(context);
           }).show();
     }
@@ -218,12 +215,13 @@ class _TakeAttendanceState extends State<TakeAttendance> {
               child: const Text("Go to homepage",
                   style: TextStyle(color: Colors.white, fontSize: 18),
                   textWidthBasis: TextWidthBasis.longestLine),
-              onPressed: () => _navigateToHomePage(context),
+              onPressed: () {
+                _navigateToHomePage(context);
+              },
               width: 200,
             )
           ],
           closeFunction: () {
-            Navigator.of(context).pop();
             _navigateToHomePage(context);
           }).show();
     } else {
@@ -249,12 +247,8 @@ class _TakeAttendanceState extends State<TakeAttendance> {
   }
 
   _navigateToHomePage(BuildContext context) {
-    Navigator.pushAndRemoveUntil<dynamic>(
-      context,
-      MaterialPageRoute<dynamic>(
-        builder: (BuildContext context) => const App(),
-      ),
-      (route) => false, //if you want to disable back feature set to false
-    );
+    Navigator.popUntil(context, (route) {
+      return route.settings.name == "/";
+    });
   }
 }
