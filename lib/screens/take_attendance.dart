@@ -142,10 +142,6 @@ class _TakeAttendanceState extends State<TakeAttendance> {
     );
   }
 
-  void onSubmitIcon() async {
-    developer.log(jsonEncode(attendanceDetails));
-  }
-
   void onCancelCick(BuildContext context) async {
     Alert(
       context: context,
@@ -158,7 +154,6 @@ class _TakeAttendanceState extends State<TakeAttendance> {
               style: TextStyle(color: Colors.white, fontSize: 18),
               textWidthBasis: TextWidthBasis.longestLine),
           onPressed: () {
-            Navigator.of(context).pop();
             _navigateToHomePage(context);
           },
           width: 200,
@@ -169,7 +164,6 @@ class _TakeAttendanceState extends State<TakeAttendance> {
 
   renderSubmitPopUp(BuildContext context) async {
     if (!attendanceTaken) {
-      attendanceTaken = true;
       Alert(
         context: context,
         type: AlertType.warning,
@@ -188,52 +182,50 @@ class _TakeAttendanceState extends State<TakeAttendance> {
       ).show();
     } else {
       Alert(
-        context: context,
-        type: AlertType.error,
-        title: "Error!",
-        desc: "Details already submitted",
-        buttons: [
-          DialogButton(
-            child: const Text("Go to Home Page",
-                style: TextStyle(color: Colors.white, fontSize: 18),
-                textWidthBasis: TextWidthBasis.longestLine),
-            onPressed: () => () {
-              Navigator.of(context).pop();
-              _navigateToHomePage(context);
-            },
-            width: 200,
-          )
-        ],
-        closeFunction: () {
-          Navigator.of(context).pop();
-          _navigateToHomePage(context);
-        }
-      ).show();
+          context: context,
+          type: AlertType.error,
+          title: "Error!",
+          desc: "Details already submitted",
+          buttons: [
+            DialogButton(
+              child: const Text("Go to Home Page",
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                  textWidthBasis: TextWidthBasis.longestLine),
+              onPressed: () => () {
+                _navigateToHomePage(context);
+              },
+              width: 200,
+            )
+          ],
+          closeFunction: () {
+            Navigator.of(context).pop();
+            _navigateToHomePage(context);
+          }).show();
     }
   }
 
   void successPopUp(BuildContext context) async {
     var response = await Attendance.submitAttendanceDetails(attendanceDetails);
     if (response) {
+      attendanceTaken = true;
       Alert(
-        context: context,
-        type: AlertType.success,
-        title: "Success",
-        desc: "Attendance Recorded successfully!",
-        buttons: [
-          DialogButton(
-            child: const Text("Go to homepage",
-                style: TextStyle(color: Colors.white, fontSize: 18),
-                textWidthBasis: TextWidthBasis.longestLine),
-            onPressed: () => _navigateToHomePage(context),
-            width: 200,
-          )
-        ],
-        closeFunction: () {
-          Navigator.of(context).pop();
-          _navigateToHomePage(context);
-        }
-      ).show();
+          context: context,
+          type: AlertType.success,
+          title: "Success",
+          desc: "Attendance Recorded successfully!",
+          buttons: [
+            DialogButton(
+              child: const Text("Go to homepage",
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                  textWidthBasis: TextWidthBasis.longestLine),
+              onPressed: () => _navigateToHomePage(context),
+              width: 200,
+            )
+          ],
+          closeFunction: () {
+            Navigator.of(context).pop();
+            _navigateToHomePage(context);
+          }).show();
     } else {
       Alert(
         context: context,
@@ -257,7 +249,12 @@ class _TakeAttendanceState extends State<TakeAttendance> {
   }
 
   _navigateToHomePage(BuildContext context) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const App()));
+    Navigator.pushAndRemoveUntil<dynamic>(
+      context,
+      MaterialPageRoute<dynamic>(
+        builder: (BuildContext context) => const App(),
+      ),
+      (route) => false, //if you want to disable back feature set to false
+    );
   }
 }

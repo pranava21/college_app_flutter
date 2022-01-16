@@ -1,0 +1,74 @@
+[
+	{
+		"attendanceId": 0,
+		"facultyUid": "086e8af0-0aa3-46cc-b095-3515053bbc2c",
+		"studentUid": "c84e7003-0ff7-4de2-b9a9-1604a1ace0d3",
+		"departmentUid": "f049da45-1712-4c13-817a-cfb1faae4ea2",
+		"attendedOn": "2022-01-16T14:32:24.358334",
+		"isPresent": true
+	},
+	{
+		"attendanceId": 0,
+		"facultyUid": "086e8af0-0aa3-46cc-b095-3515053bbc2c",
+		"studentUid": "c815ce6b-1a0a-4a01-91e5-5587b3ebb16c",
+		"departmentUid": "f049da45-1712-4c13-817a-cfb1faae4ea2",
+		"attendedOn": "2022-01-16T14:32:24.358489",
+		"isPresent": false
+	},
+	{
+		"attendanceId": 0,
+		"facultyUid": "086e8af0-0aa3-46cc-b095-3515053bbc2c",
+		"studentUid": "f8f81b7d-0419-4ee5-98d0-454cdf6e5c07",
+		"departmentUid": "f049da45-1712-4c13-817a-cfb1faae4ea2",
+		"attendedOn": "2022-01-16T14:32:24.358501",
+		"isPresent": true
+	},
+	{
+		"attendanceId": 0,
+		"facultyUid": "086e8af0-0aa3-46cc-b095-3515053bbc2c",
+		"studentUid": "a6de744e-6b76-4760-af19-c5b836ffeeb6",
+		"departmentUid": "f049da45-1712-4c13-817a-cfb1faae4ea2",
+		"attendedOn": "2022-01-16T14:32:24.358511",
+		"isPresent": false
+	},
+	{
+		"attendanceId": 0,
+		"facultyUid": "086e8af0-0aa3-46cc-b095-3515053bbc2c",
+		"studentUid": "d6ce7701-9f72-4cf1-9a92-428dfb3ec527",
+		"departmentUid": "f049da45-1712-4c13-817a-cfb1faae4ea2",
+		"attendedOn": "2022-01-16T14:32:24.358522",
+		"isPresent": true
+	},
+	{
+		"attendanceId": 0,
+		"facultyUid": "086e8af0-0aa3-46cc-b095-3515053bbc2c",
+		"studentUid": "ef1106c5-c7e9-4f4b-a84a-a957dfaeea93",
+		"departmentUid": "f049da45-1712-4c13-817a-cfb1faae4ea2",
+		"attendedOn": "2022-01-16T14:32:24.358531",
+		"isPresent": false
+	},
+	{
+		"attendanceId": 0,
+		"facultyUid": "086e8af0-0aa3-46cc-b095-3515053bbc2c",
+		"studentUid": "02450225-03c4-4bdb-8fcf-17640407f361",
+		"departmentUid": "f049da45-1712-4c13-817a-cfb1faae4ea2",
+		"attendedOn": "2022-01-16T14:32:24.358541",
+		"isPresent": true
+	},
+	{
+		"attendanceId": 0,
+		"facultyUid": "086e8af0-0aa3-46cc-b095-3515053bbc2c",
+		"studentUid": "53417507-ee1f-441a-9963-6dd50a7c4b53",
+		"departmentUid": "f049da45-1712-4c13-817a-cfb1faae4ea2",
+		"attendedOn": "2022-01-16T14:32:24.358551",
+		"isPresent": false
+	},
+	{
+		"attendanceId": 0,
+		"facultyUid": "086e8af0-0aa3-46cc-b095-3515053bbc2c",
+		"studentUid": "72f901a0-66ba-4ec8-86e6-04327f1d1619",
+		"departmentUid": "f049da45-1712-4c13-817a-cfb1faae4ea2",
+		"attendedOn": "2022-01-16T14:32:24.358561",
+		"isPresent": true
+	}
+]
