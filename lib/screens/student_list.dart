@@ -30,7 +30,8 @@ class _StudentListState extends State<StudentList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("Student List", style: Styles.navBarTitle)),
+        appBar: AppBar(
+            title: const Text("Student List", style: Styles.navBarTitle)),
         body: RefreshIndicator(
             onRefresh: loadStudents,
             child: Column(children: [
@@ -43,8 +44,7 @@ class _StudentListState extends State<StudentList> {
     if (this.mounted) {
       setState(() => this.loading = true);
 
-      final students =
-          await Student.fetchStudentsByDepartment(departmentUid);
+      final students = await Student.fetchStudentsByDepartment(departmentUid);
 
       setState(() {
         this.students = students;
@@ -76,7 +76,7 @@ class _StudentListState extends State<StudentList> {
       children: <Widget>[
         ListTile(
           leading: personIcon,
-          title: Text(student.studentName),
+          title: Text(student.studentFirstName),
           subtitle: Text(student.studentEmail),
         ),
       ],

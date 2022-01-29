@@ -8,7 +8,8 @@ part of 'faculty.dart';
 
 Faculty _$FacultyFromJson(Map<String, dynamic> json) => Faculty(
       json['facultyUid'] as String,
-      json['name'] as String,
+      json['firstName'] as String,
+      json['lastName'] as String,
       json['email'] as String,
       json['phone'] as String,
       json['address'] as String,
@@ -17,7 +18,8 @@ Faculty _$FacultyFromJson(Map<String, dynamic> json) => Faculty(
 
 Map<String, dynamic> _$FacultyToJson(Faculty instance) => <String, dynamic>{
       'facultyUid': instance.facultyUid,
-      'name': instance.name,
+      'firstName': instance.firstName,
+      'lastName': instance.lastName,
       'email': instance.email,
       'phone': instance.phone,
       'address': instance.address,

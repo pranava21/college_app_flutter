@@ -126,7 +126,7 @@ class _SelectClassState extends State<SelectClass> {
     setState(() {
       _faculties = faculties;
       selectedFacultyUid = _faculties.first.facultyUid;
-      facultyDropDownValue = _faculties.first.name;
+      facultyDropDownValue = _faculties.first.firstName;
     });
   }
 
@@ -154,8 +154,8 @@ class _SelectClassState extends State<SelectClass> {
           },
           items: _faculties.map<DropdownMenuItem<String>>((Faculty faculty) {
             return DropdownMenuItem<String>(
-              value: faculty.name,
-              child: Text(faculty.name),
+              value: faculty.firstName,
+              child: Text(faculty.firstName),
             );
           }).toList(),
           hint: const Text(
@@ -170,7 +170,7 @@ class _SelectClassState extends State<SelectClass> {
 
   void _setSelectedFacultyUid(String facultyName) {
     var faculty =
-        _faculties.where((element) => element.name == facultyName).toList();
+        _faculties.where((element) => element.firstName == facultyName).toList();
     selectedFacultyUid = faculty.first.facultyUid;
   }
 

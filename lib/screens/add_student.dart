@@ -51,7 +51,7 @@ class _AddStudentState extends State<AddStudent> {
                                   }
                                 },
                                 onSaved: (value) => setState(() =>
-                                    student.studentName = value.toString())),
+                                    student.studentFirstName = value.toString())),
                             const SizedBox(height: 20),
                             TextFormField(
                                 decoration: const InputDecoration(
@@ -163,7 +163,8 @@ class _AddStudentState extends State<AddStudent> {
     student.departmentUid = departmentUid;
 
     AddStudentModel addStudentModel = AddStudentModel(
-        student.studentName,
+        student.studentFirstName,
+        student.studentLastName,
         student.studentEmail,
         student.phoneNo,
         address,

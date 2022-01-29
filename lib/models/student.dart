@@ -10,17 +10,28 @@ part 'student.g.dart';
 @JsonSerializable()
 class Student {
   final String studentUid;
-  String studentName;
+  String studentId;
+  String studentFirstName;
+  String studentLastName;
   String studentEmail;
   String phoneNo;
   String departmentUid;
   String departmentName;
 
-  Student(this.studentUid, this.studentName, this.studentEmail, this.phoneNo,
-      this.departmentUid, this.departmentName);
+  Student(
+      this.studentUid,
+      this.studentId,
+      this.studentFirstName,
+      this.studentLastName,
+      this.studentEmail,
+      this.phoneNo,
+      this.departmentUid,
+      this.departmentName);
 
   Student.blank()
-      : studentName = "",
+      : studentId = '',
+        studentFirstName = "",
+        studentLastName = "",
         studentEmail = "",
         departmentUid = "",
         departmentName = "",
@@ -50,7 +61,8 @@ class Student {
   static Future<bool> AddStudent(AddStudentModel student) async {
     var uri = Endpoint.uri('Student/AddStudent', queryParameters: {});
     Map requestBody = {
-      "name": student.name,
+      "firstName": student.firstName,
+      "lastName": student.lastName,
       "email": student.email,
       "phone": student.phone,
       "address": student.address,
@@ -58,7 +70,8 @@ class Student {
       "departmentName": student.departmentName
     };
     var body = json.encode(requestBody);
-    final response = await http.post(uri,headers: {"Content-Type": "application/json"}, body: body);
+    final response = await http.post(uri,
+        headers: {"Content-Type": "application/json"}, body: body);
 
     if (response.statusCode != 200) return false;
 

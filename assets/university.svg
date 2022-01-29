@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" width="32" height="32" viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve" preserveAspectRatio="none" viewbox="0 0 32 32">
+
+<g>
+	<defs>
+		<polygon id="571069807_SVGID_1_" points="50,17 50,20 39,20 39,11 32,6.958 25,11 25,20 14,20 14,17 4,17 4,54 60,54 60,17   "></polygon>
+	</defs>
+	<use xlink:href="#571069807_SVGID_1_" class="stshockcolor" style="fill:#93684E;;overflow:visible;"></use>
+	<clipPath id="571069807_SVGID_2_">
+		<use xlink:href="#571069807_SVGID_1_" style="overflow:visible;"></use>
+	</clipPath>
+	<g class="st2" style="clip-path:url(#571069807_SVGID_2_);;">
+		<rect x="2.8" y="5.8" class="st1" width="58.2" height="49.4" style="fill:#FFFFFF;fill-opacity:0.15;;"></rect>
+		<path class="st0" d="M62,48H3v-5h59V48z M62,34H3v5h59V34z M62,25H3v5h59V25z" style="fill:#AFCBE1;;"></path>
+		<circle class="st0" cx="32" cy="16" r="4" style="fill:#AFCBE1;;"></circle>
+		<path class="st4" d="M25,56H14V18h11V56z M50,56H39V18h11V56z" style="fill:#231F20;fill-opacity:0.15;;"></path>
+		<polygon class="st3" points="60,54 39,54 39,11 60,23.125   " style="fill:#231F20;fill-opacity:0.3;;"></polygon>
+	</g>
+</g>
+</svg>

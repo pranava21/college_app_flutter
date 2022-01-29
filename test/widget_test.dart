@@ -9,6 +9,7 @@ import 'package:college_app/models/add_student_model.dart';
 import 'package:college_app/models/attendance.dart';
 import 'package:college_app/models/faculty.dart';
 import 'package:college_app/models/student.dart';
+import 'package:college_app/models/user.dart';
 
 import '../lib/models/department.dart';
 import 'package:test/test.dart';
@@ -27,13 +28,14 @@ void main() {
         'd1d7b25b-1ba1-419c-bf7d-790295d29e96');
 
     for (var student in students) {
-      expect(student.studentName, hasLength(greaterThan(0)));
+      expect(student.studentFirstName, hasLength(greaterThan(0)));
     }
   });
 
   test('/Student/AddStudent', () async {
     AddStudentModel student = AddStudentModel(
         "Keerthana",
+        "Menon",
         "krocks@gmail.com",
         "8747639",
         "Bangalore, Karnataka",
@@ -49,7 +51,7 @@ void main() {
         'f049da45-1712-4c13-817a-cfb1faae4ea2');
 
     for (var faculty in faculties) {
-      expect(faculty.name, hasLength(greaterThan(0)));
+      expect(faculty.firstName, hasLength(greaterThan(0)));
       expect(faculty.email, hasLength(greaterThan(0)));
     }
   });
@@ -84,5 +86,11 @@ void main() {
         await Attendance.submitAttendanceDetails(attendanceDetails);
 
     expect(response, isTrue);
+  });
+
+  test('GetUserDetails', () async {
+    UserDetails? user = await UserDetails.GetUser('jkpranava16@gmail.com');
+
+    expect(user?.emailId, 'jkpranava16@gmail.com');
   });
 }

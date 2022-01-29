@@ -8,13 +8,14 @@ part 'faculty.g.dart';
 @JsonSerializable()
 class Faculty {
   String facultyUid;
-  String name;
+  String firstName;
+  String lastName;
   String email;
   String phone;
   String address;
   String departmentUid;
 
-  Faculty(this.facultyUid, this.name, this.email, this.phone, this.address,
+  Faculty(this.facultyUid, this.firstName, this.lastName, this.email, this.phone, this.address,
       this.departmentUid);
 
   factory Faculty.fromJson(Map<String, dynamic> json) =>

@@ -108,7 +108,7 @@ class _TakeAttendanceState extends State<TakeAttendance> {
 
   Widget _renderStudentRow(BuildContext context, int index) {
     return SwitchListTile(
-      title: Text(studentDetails[index].studentName),
+      title: Text(studentDetails[index].studentFirstName),
       value: attendanceDetails[index].isPresent,
       onChanged: (bool value) {
         setState(() {
