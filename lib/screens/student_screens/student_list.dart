@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:college_app/models/student.dart';
 
-import '../styles.dart';
+import '../../styles.dart';
 
 const personIcon = Icon(Icons.person);
 

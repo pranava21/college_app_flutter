@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" width="32" height="32" viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve" viewbox="0 0 32 32">
+
+<g>
+	<g>
+		<defs>
+			<path id="571069797_SVGID_1_" d="M27.263,42c0,0-6.022,3.013-8,4c-3.158,1.579-5.493,3.316-6.252,12h37.978     c-0.759-8.684-3.094-10.421-6.251-12c-2.315-1.158-8.001-4-8.001-4H27.263z"></path>
+		</defs>
+		<use xlink:href="#571069797_SVGID_1_" style="overflow:visible;fill-rule:evenodd;clip-rule:evenodd;fill:#A6A69F;"></use>
+		<clipPath id="571069797_SVGID_2_">
+			<use xlink:href="#571069797_SVGID_1_" style="overflow:visible;"></use>
+		</clipPath>
+		<g class="st4" style="clip-path:url(#571069797_SVGID_2_);;">
+			<g>
+				<path class="st9" d="M32,58c7.5-6.064,8.333-9.047,8.333-13.333c0-6.429-0.833-10.834-0.833-10.834H32V58z" style="opacity:0.3;fill:#231F20;;"></path>
+			</g>
+			<g>
+				<path class="st3" d="M32,58c-7.5-6.064-8.333-9.047-8.333-13.333c0-3.214-11.667,4.166-11.667,4.166V58H32z" style="opacity:0.15;fill:#FFFFFF;;"></path>
+			</g>
+		</g>
+	</g>
+	<g>
+		<defs>
+			<path id="571069797_SVGID_3_" d="M32,53.857c-6-5.48-6-8.49-6-10.226C26,41.028,26,35,26,35h12c0,0,0,7.33,0,8.632     C38,45.367,38,48.377,32,53.857z"></path>
+		</defs>
+		<use xlink:href="#571069797_SVGID_3_" style="overflow:visible;fill-rule:evenodd;clip-rule:evenodd;fill:#DEDCD9;"></use>
+		<clipPath id="571069797_SVGID_4_">
+			<use xlink:href="#571069797_SVGID_3_" style="overflow:visible;"></use>
+		</clipPath>
+		<g class="st5" style="clip-path:url(#571069797_SVGID_4_);;">
+			<g>
+				<polygon class="st8" points="42.39,60.125 32,46.714 32,46.688 21.61,60.1 32,60.1 32,60.125     " style="fill:#75A2D8;;"></polygon>
+			</g>
+			<g>
+				<polygon class="stshockcolor" points="42.39,36.583 32,46.72 32,46.739 21.61,36.602 32,36.602 32,36.583     " style="fill:#85DED8;;" data-st="fill:#85DED8;;"></polygon>
+				<polygon class="st9" points="42.39,36.583 32,46.72 32,46.739 21.61,36.602 32,36.602 32,36.583     " style="opacity:0.3;fill:#231F20;;"></polygon>
+			</g>
+		</g>
+	</g>
+	<g>
+		<defs>
+			<path id="571069797_SVGID_5_" d="M32,17c1.987,0,3.64,0.339,5.006,0.922C41.658,19.905,43,17,43,17s0,13.394,0,16.049     C43,38.238,38.304,44,32,44c-6.302,0-11-5.761-11-10.951c0-2.655,0-2.77,0-4.541C21,23.587,23.247,17,32,17z"></path>
+		</defs>
+		<use xlink:href="#571069797_SVGID_5_" class="stshockcolor" style="fill:#85DED8;;overflow:visible;fill-rule:evenodd;clip-rule:evenodd;" data-st="fill:#85DED8;;overflow:visible;fill-rule:evenodd;clip-rule:evenodd;"></use>
+		<clipPath id="571069797_SVGID_6_">
+			<use xlink:href="#571069797_SVGID_5_" style="overflow:visible;"></use>
+		</clipPath>
+		<g class="st6" style="clip-path:url(#571069797_SVGID_6_);;">
+			<g>
+				<rect x="19" y="13" class="st3" width="13" height="31" style="opacity:0.15;fill:#FFFFFF;;"></rect>
+			</g>
+			<g>
+				<polygon class="st0" points="45.425,22.58 32,30.331 32,36.33 32,46 46,46     " style="opacity:0.15;fill:#231F20;;"></polygon>
+			</g>
+			<g>
+				<polygon class="st1" points="32,30.331 32,15 19,15 19,30.825 32,38.33     " style="opacity:0.3;fill:#FFFFFF;;"></polygon>
+			</g>
+		</g>
+	</g>
+	<ellipse class="st7" cx="27.5" cy="32" rx="1.5" ry="2" style="fill:#231F20;fill-opacity:0.6;;"></ellipse>
+	<ellipse class="st7" cx="36.5" cy="32" rx="1.5" ry="2" style="fill:#231F20;fill-opacity:0.6;;"></ellipse>
+</g>
+</svg>

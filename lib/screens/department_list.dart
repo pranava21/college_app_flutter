@@ -3,7 +3,7 @@
 import 'package:college_app/components/department_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:college_app/models/department.dart';
-import 'student_list.dart';
+import 'student_screens/student_list.dart';
 
 const double listItemHeight = 245.0;
 

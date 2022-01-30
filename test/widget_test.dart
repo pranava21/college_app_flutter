@@ -40,7 +40,7 @@ void main() {
         "Bangalore, Karnataka",
         "024c877b-84dd-4897-9f03-55fc14523bf6",
         "Electrical and Electronics");
-    final response = await Student.AddStudent(student);
+    final response = await Student.addStudent(student);
 
     expect(response, isFalse);
   });
@@ -91,5 +91,12 @@ void main() {
     UserDetails? user = await UserDetails.GetUser('jkpranava16@gmail.com');
 
     expect(user?.emailId, 'jkpranava16@gmail.com');
+  });
+
+  test('GetStudent', () async {
+    Student student = await Student.fetchStudentDetails('jkpranava16@gmail.com', 'f049da45-1712-4c13-817a-cfb1faae4ea2');
+
+    expect(student.studentEmail, 'jkpranava16@gmail.com');
+    expect(student.departmentName, "Computer Science");
   });
 }

@@ -58,7 +58,23 @@ class Student {
     return students;
   }
 
-  static Future<bool> AddStudent(AddStudentModel student) async {
+  static Future<Student> fetchStudentDetails(
+      String emailId, String departmentUid) async {
+    var uri = Endpoint.uri('Student/GetStudent',
+        queryParameters: {'emailId': emailId, 'departmentUid': departmentUid});
+    final response = await http.get(uri);
+
+    if (response.statusCode != 200) throw (response.body);
+
+    Student student;
+    final Map<String, dynamic> decodedResponse = json.decode(response.body);
+
+    student = Student.fromJson(decodedResponse['response']);
+
+    return student;
+  }
+
+  static Future<bool> addStudent(AddStudentModel student) async {
     var uri = Endpoint.uri('Student/AddStudent', queryParameters: {});
     Map requestBody = {
       "firstName": student.firstName,

@@ -20,7 +20,7 @@ enum SigningCharacter { student, faculty }
 
 class SignUpState extends State<SignUp> {
   bool isLoading = false;
-  SigningCharacter? _studentOrFaculty = SigningCharacter.faculty;
+  SigningCharacter? _studentOrFaculty = SigningCharacter.student;
   List<Department> departments = [];
   String dropDownValue = '';
   String selectedDepartmentUid = '';

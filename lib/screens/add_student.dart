@@ -1,5 +1,5 @@
 import 'package:college_app/models/add_student_model.dart';
-import 'package:college_app/screens/student_list.dart';
+import 'package:college_app/screens/student_screens/student_list.dart';
 import 'package:flutter/material.dart';
 import 'package:college_app/models/department.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -171,7 +171,7 @@ class _AddStudentState extends State<AddStudent> {
         departmentUid,
         student.departmentName);
 
-    var response = await Student.AddStudent(addStudentModel);
+    var response = await Student.addStudent(addStudentModel);
 
     if (response) {
       Alert(
