@@ -7,11 +7,10 @@
 
 import 'package:college_app/models/add_student_model.dart';
 import 'package:college_app/models/attendance.dart';
+import 'package:college_app/models/department.dart';
 import 'package:college_app/models/faculty.dart';
 import 'package:college_app/models/student.dart';
 import 'package:college_app/models/user.dart';
-
-import '../lib/models/department.dart';
 import 'package:test/test.dart';
 
 void main() {

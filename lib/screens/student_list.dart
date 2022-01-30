@@ -41,8 +41,8 @@ class _StudentListState extends State<StudentList> {
   }
 
   Future<void> loadStudents() async {
-    if (this.mounted) {
-      setState(() => this.loading = true);
+    if (mounted) {
+      setState(() => loading = true);
 
       final students = await Student.fetchStudentsByDepartment(departmentUid);
 

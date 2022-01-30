@@ -1,6 +1,8 @@
 import 'dart:developer';
 
+import 'package:college_app/layouts/faculty_layout.dart';
 import 'package:college_app/layouts/student_layout.dart';
+import 'package:college_app/layouts/user_layout.dart';
 import 'package:college_app/resources/authmethods.dart';
 import 'package:college_app/screens/signup_screen.dart';
 import 'package:college_app/utils/utils.dart';
@@ -42,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
       log(result);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => StudentLayout()
+          builder: (context) => const UserLayout(studentLayout: StudentLayout(), facultyLayout: FacultyLayout())
         ),
       );
     } else {

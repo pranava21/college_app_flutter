@@ -1,11 +1,12 @@
+import 'package:college_app/layouts/faculty_layout.dart';
 import 'package:college_app/layouts/student_layout.dart';
+import 'package:college_app/layouts/user_layout.dart';
 import 'package:college_app/providers/user_provider.dart';
 import 'package:college_app/screens/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +29,9 @@ class MyApp extends StatelessWidget {
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.active) {
                 if (snapshot.hasData) {
-                  return StudentLayout();
+                  return const UserLayout(
+                      studentLayout: StudentLayout(),
+                      facultyLayout: FacultyLayout());
                 } else if (snapshot.hasError) {
                   return Center(
                     child: Text('${snapshot.error}'),
