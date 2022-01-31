@@ -8,7 +8,8 @@ class StudentProfile extends StatelessWidget {
   final UserDetails user;
   final Student student;
 
-  const StudentProfile({Key? key, required this.user, required this.student}) : super(key: key);
+  const StudentProfile({Key? key, required this.user, required this.student})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +68,34 @@ class StudentProfile extends StatelessWidget {
                           alignment: Alignment.topLeft,
                           padding: const EdgeInsets.only(top: 20, left: 30),
                           child: Text(student.departmentName,
+                              style: GoogleFonts.spartan(
+                                fontSize: 15,
+                              )),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        )
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    alignment: Alignment.topLeft,
+                    padding: const EdgeInsets.only(top: 20, left: 30),
+                    child: Text('Home Address',
+                        style: GoogleFonts.spartan(
+                            fontSize: 18, fontWeight: FontWeight.bold)),
+                  ),
+                  Card(
+                    color: Colors.grey[200],
+                    child: Column(
+                      children: [
+                        Container(
+                          alignment: Alignment.topLeft,
+                          padding: const EdgeInsets.only(top: 20, left: 30),
+                          child: Text(user.address,
                               style: GoogleFonts.spartan(
                                 fontSize: 15,
                               )),

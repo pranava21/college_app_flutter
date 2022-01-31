@@ -40,9 +40,12 @@ class StudentDrawer extends StatelessWidget {
                   },
                   child: ListTile(
                       leading: const Icon(Icons.account_circle),
-                      title: Text(
-                        'Profile',
-                        style: GoogleFonts.spartan(fontSize: 17),
+                      title: Padding(
+                        padding: const EdgeInsets.only(top: 2),
+                        child: Text(
+                          'Profile',
+                          style: GoogleFonts.spartan(fontSize: 17),
+                        ),
                       )),
                 ),
               ],

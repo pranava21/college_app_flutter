@@ -38,58 +38,60 @@ class _StudentLayoutState extends State<StudentLayout> {
       ),
       drawer: StudentDrawer(user: user!),
       body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              alignment: Alignment.topLeft,
-              padding: const EdgeInsets.fromLTRB(30, 25, 0, 10),
-              child: Text('Hi there, ${user.firstName}!',
-                  style: GoogleFonts.spartan(
-                      fontSize: 23, fontWeight: FontWeight.bold)),
-            ),
-            Container(
-              alignment: Alignment.topLeft,
-              padding: const EdgeInsets.fromLTRB(32, 0, 0, 20),
-              child: Text(
-                "It's $_timeString",
-                style: GoogleFonts.spartan(fontSize: 16),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                alignment: Alignment.topLeft,
+                padding: const EdgeInsets.fromLTRB(30, 25, 0, 10),
+                child: Text('Hi there, ${user.firstName}!',
+                    style: GoogleFonts.spartan(
+                        fontSize: 23, fontWeight: FontWeight.bold)),
               ),
-            ),
-            Container(
-              alignment: Alignment.topLeft,
-              padding: const EdgeInsets.fromLTRB(32, 0, 0, 0),
-              child: Text(
-                'Here are some reasons why you are lucky!',
-                style: GoogleFonts.spartan(fontSize: 14),
+              Container(
+                alignment: Alignment.topLeft,
+                padding: const EdgeInsets.fromLTRB(32, 0, 0, 20),
+                child: Text(
+                  "It's $_timeString",
+                  style: GoogleFonts.spartan(fontSize: 16),
+                ),
               ),
-            ),
-            SizedBox(
-              height: 355,
-              child: PageView(
-                //scrollDirection: Axis.horizontal,
-                controller: PageController(viewportFraction: 0.9),
-                children: const [
-                  CardsTile(
-                    imagePath: 'assets/teachers.jpg',
-                    title: 'Best in class teaching',
-                    subtitle:
-                        'You will receive the best learning in the world!',
-                  ),
-                  CardsTile(
-                    imagePath: 'assets/labs.jpg',
-                    title: 'Best in class labs',
-                    subtitle:
-                        'We offer state of the labs for your amazing projects!',
-                  ),
-                  CardsTile(
-                    imagePath: 'assets/placement1.jpg',
-                    title: 'Best in class placement',
-                    subtitle: 'Consider yourself most employable person!',
-                  ),
-                ],
+              Container(
+                alignment: Alignment.topLeft,
+                padding: const EdgeInsets.fromLTRB(32, 0, 0, 0),
+                child: Text(
+                  'Here are some reasons why you are lucky!',
+                  style: GoogleFonts.spartan(fontSize: 14),
+                ),
               ),
-            )
-          ],
+              SizedBox(
+                height: 355,
+                child: PageView(
+                  //scrollDirection: Axis.horizontal,
+                  controller: PageController(viewportFraction: 0.9),
+                  children: const [
+                    CardsTile(
+                      imagePath: 'assets/teachers.jpg',
+                      title: 'Best in class teaching',
+                      subtitle:
+                          'You will receive the best learning in the world!',
+                    ),
+                    CardsTile(
+                      imagePath: 'assets/labs.jpg',
+                      title: 'Best in class labs',
+                      subtitle:
+                          'We offer state of the labs for your amazing projects!',
+                    ),
+                    CardsTile(
+                      imagePath: 'assets/placement1.jpg',
+                      title: 'Best in class placement',
+                      subtitle: 'Consider yourself most employable person!',
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
