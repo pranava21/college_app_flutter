@@ -48,13 +48,12 @@ class Student {
     var uri = Endpoint.uri('Student/$departmentUid', queryParameters: {});
 
     var finalToken = await AuthMethods().getToken();
-
+    List<Student> students = <Student>[];
     final response =
         await http.get(uri, headers: {'Authorization': finalToken});
 
-    if (response.statusCode != 200) throw (response.body);
+    if (response.statusCode != 200) return students;
 
-    List<Student> students = <Student>[];
     final Map<String, dynamic> decodedResponse = json.decode(response.body);
 
     for (var student in decodedResponse['response']) {

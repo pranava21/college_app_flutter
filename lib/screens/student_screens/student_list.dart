@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:college_app/models/student.dart';
-
-import '../../styles.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 const personIcon = Icon(Icons.person);
 
@@ -31,14 +31,21 @@ class _StudentListState extends State<StudentList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-            title: const Text("Student List", style: Styles.navBarTitle)),
+        appBar:
+            AppBar(title: Text("Student List", style: GoogleFonts.spartan())),
         body: RefreshIndicator(
             onRefresh: loadStudents,
-            child: Column(children: [
-              renderProgressBar(context),
-              Expanded(child: renderStudentListView(context)),
-            ])));
+            child: students.isEmpty
+                ? Center(
+                    child: SvgPicture.asset(
+                      'assets/discontinued_product.svg',
+                      height: 100,
+                    ),
+                  )
+                : Column(children: [
+                    renderProgressBar(context),
+                    Expanded(child: renderStudentListView(context)),
+                  ])));
   }
 
   Future<void> loadStudents() async {
@@ -77,8 +84,8 @@ class _StudentListState extends State<StudentList> {
       children: <Widget>[
         ListTile(
           leading: personIcon,
-          title: Text(student.studentFirstName),
-          subtitle: Text(student.studentEmail),
+          title: Text(student.studentFirstName, style: GoogleFonts.spartan()),
+          subtitle: Text(student.studentEmail, style: GoogleFonts.spartan()),
         ),
       ],
     ));

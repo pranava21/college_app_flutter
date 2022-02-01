@@ -32,10 +32,10 @@ class ActionList extends StatelessWidget {
               imagePath: 'assets/classmate.svg',
               route: route.addStudent),
           ActionTile(
-              name: "Take Attendance",
+              name: "Attendance",
               subtitle: 'Mark attendance for students',
               imagePath: 'assets/attendance_list.svg',
-              route: route.selectClass),
+              route: route.takeAttendance),
         ],
       ),
     );

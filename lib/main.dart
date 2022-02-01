@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:college_app/utils/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,34 +23,34 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [ChangeNotifierProvider(create: (_) => UserProvider())],
       child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'College App',
-          home: StreamBuilder(
-            stream: FirebaseAuth.instance.authStateChanges(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.active) {
-                if (snapshot.hasData) {
-                  return const UserLayout(
-                      studentLayout: StudentLayout(),
-                      facultyLayout: FacultyLayout());
-                } else if (snapshot.hasError) {
-                  return Center(
-                    child: Text('${snapshot.error}'),
-                  );
-                }
-              }
-
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator(
-                  color: Colors.blue,
+        debugShowCheckedModeBanner: false,
+        title: 'College App',
+        home: StreamBuilder(
+          stream: FirebaseAuth.instance.authStateChanges(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.active) {
+              if (snapshot.hasData) {
+                return const UserLayout(
+                    studentLayout: StudentLayout(),
+                    facultyLayout: FacultyLayout());
+              } else if (snapshot.hasError) {
+                return Center(
+                  child: Text('${snapshot.error}'),
                 );
               }
-              return const LoginScreen();
-            },
-          )
+            }
 
-          //home: SignUp(),
-          ),
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const CircularProgressIndicator(
+                color: Colors.blue,
+              );
+            }
+            return const LoginScreen();
+          },
+        ),
+        onGenerateRoute: (settings) => controller(settings),
+        //home: SignUp(),
+      ),
     );
   }
 }

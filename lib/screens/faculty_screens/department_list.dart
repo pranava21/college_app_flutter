@@ -3,7 +3,8 @@
 import 'package:college_app/components/department_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:college_app/models/department.dart';
-import 'student_screens/student_list.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../student_screens/student_list.dart';
 
 const double listItemHeight = 245.0;
 
@@ -27,7 +28,8 @@ class _DepartmentListState extends State<DepartmentList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("List of Departments")),
+        appBar: AppBar(
+            title: Text("List of Departments", style: GoogleFonts.spartan())),
         body: RefreshIndicator(
             onRefresh: loadDepartments,
             child: Column(

@@ -2,8 +2,9 @@ import 'package:college_app/models/add_student_model.dart';
 import 'package:college_app/screens/student_screens/student_list.dart';
 import 'package:flutter/material.dart';
 import 'package:college_app/models/department.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import '../models/student.dart';
+import '../../models/student.dart';
 
 class AddStudent extends StatefulWidget {
   const AddStudent({Key? key}) : super(key: key);
@@ -29,7 +30,8 @@ class _AddStudentState extends State<AddStudent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Add Student')),
+        appBar:
+            AppBar(title: Text('Add Student', style: GoogleFonts.spartan())),
         body: SingleChildScrollView(
             child: Container(
                 padding: const EdgeInsets.symmetric(
@@ -50,8 +52,8 @@ class _AddStudentState extends State<AddStudent> {
                                     return 'Please enter your name';
                                   }
                                 },
-                                onSaved: (value) => setState(() =>
-                                    student.studentFirstName = value.toString())),
+                                onSaved: (value) => setState(() => student
+                                    .studentFirstName = value.toString())),
                             const SizedBox(height: 20),
                             TextFormField(
                                 decoration: const InputDecoration(

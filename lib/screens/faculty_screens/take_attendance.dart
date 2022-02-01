@@ -1,11 +1,15 @@
 import 'package:college_app/models/attendance.dart';
 import 'package:college_app/models/student.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'dart:developer' as developer;
 
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class TakeAttendance extends StatefulWidget {
+  static const routeName = '/takeAttendance';
+
   final String departmentUid;
   final String facultyUid;
 
@@ -41,7 +45,7 @@ class _TakeAttendanceState extends State<TakeAttendance> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Take Attendance'),
+          title: Text('Take Attendance', style: GoogleFonts.spartan()),
           actions: [
             IconButton(
                 icon: const Icon(Icons.cancel_rounded),
@@ -51,23 +55,40 @@ class _TakeAttendanceState extends State<TakeAttendance> {
                 onPressed: () => renderSubmitPopUp(context))
           ],
         ),
-        body: SingleChildScrollView(
-            child: Container(
-                padding: const EdgeInsets.symmetric(
-                    vertical: 16.0, horizontal: 16.0),
-                child: Builder(
-                  builder: (context) => Form(
-                    key: _formKey,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        renderStudentsListView(context),
-                        //renderSubmitButton(context)
-                      ],
-                    ),
-                  ),
-                ))));
+        body: studentDetails.isEmpty
+            ? renderEmptyScreen()
+            : SingleChildScrollView(
+                child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 16.0, horizontal: 16.0),
+                    child: Builder(
+                      builder: (context) => Form(
+                        key: _formKey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            renderStudentsListView(context),
+                            //renderSubmitButton(context)
+                          ],
+                        ),
+                      ),
+                    ))));
+  }
+
+  Widget renderEmptyScreen() {
+    return Center(
+      child: Column(
+        children: [
+          SvgPicture.asset(
+            'assets/coffee.svg',
+            height: 150,
+          ),
+          Text('Looks all the students have taken a vacation!',
+              style: GoogleFonts.spartan())
+        ],
+      ),
+    );
   }
 
   Future<void> loadStudents() async {
