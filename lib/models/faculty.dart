@@ -44,4 +44,24 @@ class Faculty {
 
     return listOfFaculty;
   }
+
+  static Future<Faculty> fetchFacultyDetails(
+      String emailId, String departmentUid) async {
+    var uri = Endpoint.uri('Faculty/GetFaculty',
+        queryParameters: {'emailId': emailId, 'departmentUid': departmentUid});
+
+    var finalToken = await AuthMethods().getToken();
+
+    final response =
+        await http.get(uri, headers: {'Authorization': finalToken});
+
+    if (response.statusCode != 200) throw (response.body);
+
+    Faculty faculty;
+    final Map<String, dynamic> decodedResponse = json.decode(response.body);
+
+    faculty = Faculty.fromJson(decodedResponse['response']);
+
+    return faculty;
+  }
 }
