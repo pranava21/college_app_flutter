@@ -17,6 +17,8 @@ class Department {
   factory Department.fromJson(Map<String, dynamic> json) =>
       _$DepartmentFromJson(json);
 
+  Map<String, dynamic> toJson() => _$DepartmentToJson(this);
+
   static Future<List<Department>> fetchAllDepartments() async {
     var uri = Endpoint.uri('/Department/GetDepartments', queryParameters: {});
 

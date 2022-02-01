@@ -7,10 +7,10 @@
 
 import 'package:college_app/models/add_student_model.dart';
 import 'package:college_app/models/attendance.dart';
+import 'package:college_app/models/department.dart';
 import 'package:college_app/models/faculty.dart';
 import 'package:college_app/models/student.dart';
-
-import '../lib/models/department.dart';
+import 'package:college_app/models/user.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -27,19 +27,20 @@ void main() {
         'd1d7b25b-1ba1-419c-bf7d-790295d29e96');
 
     for (var student in students) {
-      expect(student.studentName, hasLength(greaterThan(0)));
+      expect(student.studentFirstName, hasLength(greaterThan(0)));
     }
   });
 
   test('/Student/AddStudent', () async {
     AddStudentModel student = AddStudentModel(
         "Keerthana",
+        "Menon",
         "krocks@gmail.com",
         "8747639",
         "Bangalore, Karnataka",
         "024c877b-84dd-4897-9f03-55fc14523bf6",
         "Electrical and Electronics");
-    final response = await Student.AddStudent(student);
+    final response = await Student.addStudent(student);
 
     expect(response, isFalse);
   });
@@ -49,7 +50,7 @@ void main() {
         'f049da45-1712-4c13-817a-cfb1faae4ea2');
 
     for (var faculty in faculties) {
-      expect(faculty.name, hasLength(greaterThan(0)));
+      expect(faculty.firstName, hasLength(greaterThan(0)));
       expect(faculty.email, hasLength(greaterThan(0)));
     }
   });
@@ -84,5 +85,18 @@ void main() {
         await Attendance.submitAttendanceDetails(attendanceDetails);
 
     expect(response, isTrue);
+  });
+
+  test('GetUserDetails', () async {
+    UserDetails? user = await UserDetails.getUser('jkpranava16@gmail.com');
+
+    expect(user?.emailId, 'jkpranava16@gmail.com');
+  });
+
+  test('GetStudent', () async {
+    Student student = await Student.fetchStudentDetails('jkpranava16@gmail.com', 'f049da45-1712-4c13-817a-cfb1faae4ea2');
+
+    expect(student.studentEmail, 'jkpranava16@gmail.com');
+    expect(student.departmentName, "Computer Science");
   });
 }

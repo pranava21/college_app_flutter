@@ -1,4 +1,5 @@
 import 'package:college_app/endpoint.dart';
+import 'package:college_app/resources/authmethods.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -17,21 +18,18 @@ class Attendance {
   Attendance(this.attendanceId, this.facultyUid, this.studentUid,
       this.departmentUid, this.attendedOn, this.isPresent);
 
-  Map toJson() => {
-        'attendanceId': attendanceId,
-        'facultyUid': facultyUid,
-        'studentUid': studentUid,
-        'departmentUid': departmentUid,
-        'attendedOn': attendedOn.toIso8601String(),
-        'isPresent': isPresent
-      };
+  factory Attendance.fromJson(Map<String, dynamic> json) =>
+      _$AttendanceFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AttendanceToJson(this);
 
   static Future<bool> submitAttendanceDetails(List<Attendance> details) async {
     var uri = Endpoint.uri('/Student/TakeAttendance', queryParameters: {});
-
+    String token = await AuthMethods().getToken();
     var requestBody = json.encode(details);
     final response = await http.post(uri,
-        headers: {"Content-Type": "application/json"}, body: requestBody);
+        headers: {"Content-Type": "application/json", "Authorization": token},
+        body: requestBody);
 
     if (response.statusCode != 200) return false;
 

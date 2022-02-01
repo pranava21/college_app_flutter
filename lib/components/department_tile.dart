@@ -8,7 +8,7 @@ class DepartmentTile extends StatelessWidget {
   final Department department;
   final bool darkTheme;
 
-  DepartmentTile({required this.department, required this.darkTheme});
+  const DepartmentTile({Key? key, required this.department, required this.darkTheme}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
