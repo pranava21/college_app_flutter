@@ -1,8 +1,8 @@
 import 'package:college_app/endpoint.dart';
 import 'package:college_app/models/add_student_model.dart';
+import 'package:college_app/resources/authmethods.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:http/http.dart' as http;
-import 'department.dart';
 import 'dart:convert';
 
 part 'student.g.dart';
@@ -41,10 +41,16 @@ class Student {
   factory Student.fromJson(Map<String, dynamic> json) =>
       _$StudentFromJson(json);
 
+  Map<String, dynamic> toJson() => _$StudentToJson(this);
+
   static Future<List<Student>> fetchStudentsByDepartment(
       String departmentUid) async {
     var uri = Endpoint.uri('Student/$departmentUid', queryParameters: {});
-    final response = await http.get(uri);
+
+    var finalToken = await AuthMethods().getToken();
+
+    final response =
+        await http.get(uri, headers: {'Authorization': finalToken});
 
     if (response.statusCode != 200) throw (response.body);
 
@@ -62,7 +68,11 @@ class Student {
       String emailId, String departmentUid) async {
     var uri = Endpoint.uri('Student/GetStudent',
         queryParameters: {'emailId': emailId, 'departmentUid': departmentUid});
-    final response = await http.get(uri);
+
+    var finalToken = await AuthMethods().getToken();
+
+    final response =
+        await http.get(uri, headers: {'Authorization': finalToken});
 
     if (response.statusCode != 200) throw (response.body);
 
@@ -86,8 +96,15 @@ class Student {
       "departmentName": student.departmentName
     };
     var body = json.encode(requestBody);
+
+    var finalToken = await AuthMethods().getToken();
+
     final response = await http.post(uri,
-        headers: {"Content-Type": "application/json"}, body: body);
+        headers: {
+          "Content-Type": "application/json",
+          'Authorization': finalToken
+        },
+        body: body);
 
     if (response.statusCode != 200) return false;
 

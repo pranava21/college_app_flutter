@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:college_app/endpoint.dart';
 import 'package:college_app/models/response.dart';
+import 'package:college_app/resources/authmethods.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:http/http.dart' as http;
 
@@ -37,15 +38,18 @@ class UserDetails {
   factory UserDetails.fromJson(Map<String, dynamic> json) =>
       _$UserDetailsFromJson(json);
 
-  static Future<ResponseMessage> AddUserToDatabase(
+  static Future<ResponseMessage> addUserToDatabase(
       UserDetails user, String facultyOrStudent) async {
     var uri = Endpoint.uri('Accounts/AddUser',
         queryParameters: {'facultyOrStudent': facultyOrStudent});
 
     var body = json.encode(user.toJson());
+    var finalToken = await AuthMethods().getToken();
 
-    final res = await http
-        .post(uri, body: body, headers: {"Content-Type": "application/json"});
+    final res = await http.post(uri, body: body, headers: {
+      "Content-Type": "application/json",
+      'Authorization': finalToken
+    });
     final Map<String, dynamic> result = json.decode(res.body);
     ResponseMessage response = ResponseMessage();
     response.isSucess = result['isSuccess'];
@@ -54,10 +58,13 @@ class UserDetails {
     return response;
   }
 
-  static Future<UserDetails?> GetUser(String emailId) async {
+  static Future<UserDetails?> getUser(String emailId) async {
     var uri =
         Endpoint.uri('Accounts/GetUser', queryParameters: {'emailId': emailId});
-    var res = await http.get(uri);
+
+    var finalToken = await AuthMethods().getToken();
+
+    var res = await http.get(uri, headers: {'Authorization': finalToken});
     final Map<String, dynamic> result = json.decode(res.body);
 
     var userDetails = result['response'];
@@ -65,8 +72,7 @@ class UserDetails {
     UserDetails? user;
     if (userDetails != null) {
       user = UserDetails.fromJson(userDetails);
-    }
-    else {
+    } else {
       user = null;
     }
 

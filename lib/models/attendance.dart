@@ -17,14 +17,10 @@ class Attendance {
   Attendance(this.attendanceId, this.facultyUid, this.studentUid,
       this.departmentUid, this.attendedOn, this.isPresent);
 
-  Map toJson() => {
-        'attendanceId': attendanceId,
-        'facultyUid': facultyUid,
-        'studentUid': studentUid,
-        'departmentUid': departmentUid,
-        'attendedOn': attendedOn.toIso8601String(),
-        'isPresent': isPresent
-      };
+  factory Attendance.fromJson(Map<String, dynamic> json) =>
+      _$AttendanceFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AttendanceToJson(this);
 
   static Future<bool> submitAttendanceDetails(List<Attendance> details) async {
     var uri = Endpoint.uri('/Student/TakeAttendance', queryParameters: {});

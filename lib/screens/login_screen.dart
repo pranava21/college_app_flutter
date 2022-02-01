@@ -44,8 +44,9 @@ class _LoginScreenState extends State<LoginScreen> {
       log(result);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => const UserLayout(studentLayout: StudentLayout(), facultyLayout: FacultyLayout())
-        ),
+            builder: (context) => const UserLayout(
+                studentLayout: StudentLayout(),
+                facultyLayout: FacultyLayout())),
       );
     } else {
       setState(() {

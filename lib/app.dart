@@ -17,7 +17,7 @@ class ActionList extends StatefulWidget {
   const ActionList({Key? key}) : super(key: key);
 
   @override
-  State createState() => new ActionListState();
+  State createState() => ActionListState();
 }
 
 class ActionListState extends State<ActionList> {
@@ -100,17 +100,17 @@ class ActionListState extends State<ActionList> {
 
   void _navigateToDepartmentList(BuildContext context) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => DepartmentList()));
+        context, MaterialPageRoute(builder: (context) => const DepartmentList()));
   }
 
   void _navigateToAddStudentForm(BuildContext context) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => AddStudent()));
+        context, MaterialPageRoute(builder: (context) => const AddStudent()));
   }
 
   void _navigateToTakeAttendance(BuildContext context) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => SelectClass()));
+        context, MaterialPageRoute(builder: (context) => const SelectClass()));
   }
 
   Widget _tileImage(String url) {

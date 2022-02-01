@@ -9,6 +9,7 @@ class AuthMethods {
     String result = "Some error occurred";
 
     try {
+      // ignore: unused_local_variable
       UserCredential cred = await _auth.createUserWithEmailAndPassword(
           email: user.emailId, password: password);
 
@@ -19,13 +20,14 @@ class AuthMethods {
         facultyOrStudent = 'student';
       }
       var response =
-          await UserDetails.AddUserToDatabase(user, facultyOrStudent);
+          await UserDetails.addUserToDatabase(user, facultyOrStudent);
 
       if (response.isSucess) {
         result = "Success";
       } else {
+        // ignore: unused_local_variable
         var response =
-            await UserDetails.AddUserToDatabase(user, facultyOrStudent);
+            await UserDetails.addUserToDatabase(user, facultyOrStudent);
       }
     } catch (err) {
       result = err.toString();
@@ -50,9 +52,16 @@ class AuthMethods {
   Future<UserDetails?> getUserDetails() async {
     User currentUserEmail = _auth.currentUser!;
 
-    UserDetails? user = await UserDetails.GetUser(currentUserEmail.email!);
+    UserDetails? user = await UserDetails.getUser(currentUserEmail.email!);
 
     return user;
+  }
+
+  Future<String> getToken() async {
+    var token = await _auth.currentUser!.getIdToken(true);
+    var finalToken = 'Bearer ' + token;
+
+    return finalToken;
   }
 
   Future<void> logOut() async {

@@ -88,7 +88,7 @@ void main() {
   });
 
   test('GetUserDetails', () async {
-    UserDetails? user = await UserDetails.GetUser('jkpranava16@gmail.com');
+    UserDetails? user = await UserDetails.getUser('jkpranava16@gmail.com');
 
     expect(user?.emailId, 'jkpranava16@gmail.com');
   });

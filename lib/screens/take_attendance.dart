@@ -85,10 +85,12 @@ class _TakeAttendanceState extends State<TakeAttendance> {
   }
 
   void formAttendancePayLoad() {
-    studentDetails.forEach((student) => {
-          attendanceDetails.add(Attendance(0, facultyUid, student.studentUid,
-              departmentUid, DateTime.now(), false))
-        });
+    for (var student in studentDetails) {
+      {
+        attendanceDetails.add(Attendance(0, facultyUid, student.studentUid,
+            departmentUid, DateTime.now(), false));
+      }
+    }
   }
 
   Widget renderProgressBar(BuildContext context) {

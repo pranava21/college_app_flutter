@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class StudentDrawer extends StatelessWidget {
-  UserDetails user;
-  StudentDrawer({Key? key, required this.user}) : super(key: key);
+  final UserDetails user;
+  const StudentDrawer({Key? key, required this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

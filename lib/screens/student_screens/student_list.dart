@@ -8,9 +8,10 @@ const personIcon = Icon(Icons.person);
 class StudentList extends StatefulWidget {
   final String departmentUid;
 
-  StudentList(this.departmentUid);
+  const StudentList(this.departmentUid, {Key? key}) : super(key: key);
 
   @override
+  // ignore: no_logic_in_create_state
   createState() => _StudentListState(departmentUid);
 }
 
